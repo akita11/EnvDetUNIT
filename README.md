@@ -2,15 +2,15 @@
 
 アナログ信号波形の包絡線（波形の外側の波形）を生成します。マイクなどからの音声信号の振幅を計測する場合などに便利です。Grove端子または3ピン端子で、マイク等の信号源とM5Stack等のマイコンとの間に接続して使用します。
 
-<img src="https://github.com/akita11/EnvDetUNIT/blob/main/EnvDetUNIT_f.png" width="240px">
+<img src="https://github.com/akita11/EnvDetUNIT/blob/main/EnvDet1.jpg" width="240px">
 
 表面
 
-<img src="https://github.com/akita11/EnvDetUNIT/blob/main/EnvDetUNIT_b.png" width="240px">
+<img src="https://github.com/akita11/EnvDetUNIT/blob/main/EnvDet2.jpg" width="240px">
 
 裏面
 
-この図の左側（CN1・J1）から信号源（マイクアンプの出力など）を接続し、右側（CN2・J2）に包絡線波形が出力されるので、マイコン等に接続します。
+左側（CN1・J1、矢印の根本側）から信号源（マイクアンプの出力）を接続し、右側（CN2・J2、矢印の先端側）に包絡線波形が出力されるので、マイコン等に接続します。
 
 ## ピン配置
 
@@ -42,10 +42,19 @@
 
 このようにして得られた包絡線波形に対してA/D変換を行えば、（ほぼ）正しく信号波形の振幅を取得することができます。
 
+<img src="https://github.com/akita11/EnvDetUNIT/blob/main/measured_wave1.jpg">
+
+実際のマイク（M5StackマイクUNIT）の波形（黄色）と、このUNITの出力（水色）。
+
+※なおこの回路の出力インピーダンスは高めなので、抵抗などの低インピーダンスの負荷を駆動すると波形が歪むことがあります。必要に応じて出力側にバッファ（ボルテージフォロア等）を使用してください。
 
 ## （オプション）時定数の調整
 
 包絡線検波の回路の特性上、入力する信号波形の周波数によっては正しく包絡線を得られない場合があります。標準設定では1kHz前後の音声帯域の信号では、ほぼ正しい包絡線を得られますが、必要であれば回路の特性（時定数）を変更することができます。JP3をカットし、J3（2.54mmピンヘッダ2ピン）に適当な容量のコンデンサを接続します。標準では10uF（時定数は約160Hz）で、これより大きな容量のコンデンサを接続すると、包絡線の変化がより緩やかになります。
+
+<img src="https://github.com/akita11/EnvDetUNIT/blob/main/measured_wave2.jpg">
+
+Aoutに100uFのコンデンサを接続したときの、マイクの波形（黄色）と、このUNITの出力（水色）。
 
 
 ## Author
